@@ -576,6 +576,7 @@ class CalendarController extends AbstractCompatibilityController
             'endDate' => $endDate,
             'customSearch' => $customSearch,
             'configurations' => $this->getCurrentConfigurations(),
+            'currentPage' => $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1,
         ], __CLASS__, __FUNCTION__);
     }
 

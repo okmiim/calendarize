@@ -1,0 +1,23 @@
+<f:if condition="{searchMode}">
+	<f:render partial="Event/SearchInformation" arguments="{searchParameter: searchParameter, indices: indices}" />
+</f:if>
+
+<f:if condition="{indices -> f:count()}">
+	<f:then>
+		<f:if condition="{settings.hidePagination}">
+			<f:then>
+				<f:for each="{indices}" as="index">
+					<f:render partial="{index.configuration.partialIdentifier}/ListItem" arguments="{index: index}" />
+				</f:for>
+			</f:then>
+			<f:else>
+				<f:for each="{pagination.paginator.paginatedItems}" as="index">
+					<f:render partial="{index.configuration.partialIdentifier}/ListItem" arguments="{index: index}" />
+				</f:for>
+			</f:else>
+		</f:if>
+	</f:then>
+	<f:else>
+		<f:translate key="no_events" />
+	</f:else>
+</f:if>
